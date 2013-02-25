@@ -1,7 +1,7 @@
 # [RubyClientSide]()
 
 The aim of **RubyClientSide** is to enable the use of Ruby in the client side of a web application.
-The ruby parser/compiler is taken from the Opal project.
+The ruby parser/compiler is taken from the [Opal project](https://github.com/opal/opal).
 Instead of compiling a Ruby code to Javascript with a native compiler, we use a Javascript compiler.
 
 **This is only a proof of concept: coffeescript or Opal should be used to develop "serious" web application :) .**
