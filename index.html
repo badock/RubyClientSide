@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Example of ruby scripts in the navigator</title>
+
+    <script src="javascripts/jquery.js" type="text/javascript"></script>
+    <script src="javascripts/ruby.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+
+    <script type="text/ruby">
+      puts "toto"
+    </script>
+
+
+    <script type="text/ruby">
+    
+      class Foo
+        attr_accessor :name
+
+        def method1
+          return "result of Foo.method1!"
+        end
+
+        def method2
+          return "result of Foo.method2!"
+        end
+      end
+
+      class Bar < Foo
+        def method2
+          return "result of Bar.method2!"
+        end
+      end
+
+      def func 
+        puts "From func()!"
+        bar = Bar.new()
+        message = bar.method1()
+        message += "<br>"
+        message += bar.method2()
+      end
+
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to RubyJS</h1>
+
+      The aim of this project is to use Ruby to write the client side of a web application. The ruby parser/compiler is taken from the Opal project. Instead of compiling a Ruby code to Javascript with a native compiler, we use a Javascript compiler. This is only a proof of concept: coffeescript or Opal should be used to develop "serious" web application :) .
+
+      <h3>Simple inheritance in a web page</h3>
+
+      <p>In Ruby it is very easy to perform inheritance easily. One would say that "classic inheritance" is not the prototype way to do, but I find it quite useful. To do so, it is possible to write Ruby classes, and to embed it in you code as follow:</p>
+
+      <pre class="prettyprint linenums">
+&lt;script type="text/ruby"&gt;
+      
+  class Foo
+    attr_accessor :name
+
+    def method1
+      return "result of Foo.method1!"
+    end
+
+    def method2
+      return "result of Foo.method2!"
+    end
+  end
+
+  class Bar &lt; Foo
+    def method2
+      return "result of Bar.method2!"
+    end
+  end
+
+&lt;/script&gt;
+    </pre>
+
+      <h3>Calling javascript from Ruby</h3>
+
+      <p>Now if you want to call javascript from a ruby script, you would proceed as follow:</p>
+      <pre class="prettyprint linenums">
+&lt;script type="text/ruby"&gt;
+      
+  def func 
+    return "result of a ruby function"
+  end
+
+  `console.log("now: "+#{Time.new()})`
+  `document.body.innerHTML = #{func()};`
+
+&lt;/script&gt;
+    </pre>
+      <h3>Calling Ruby from Javascript</h3>
+
+      <p>As you can call javascript from a ruby script, you can also call Ruby from Javascript. To do so, please proceed as follow:</p>
+    
+      <pre class="prettyprint linenums">
+&lt;script type="text/javascript"&gt;
+  class Foo
+    def bar
+      puts "called bar on class Foo defined in ruby code"
+    end
+  end
+&lt;/script&gt;
+
+  ...
+
+&lt;script type="text/javascript"&gt;
+      
+  Ruby.Foo.$new().$bar();
+
+&lt;/script&gt;
+    </pre>
+    </div>
+  </body>
+</html>
