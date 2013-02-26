@@ -56,7 +56,7 @@ Now if you want to call javascript from a ruby script, you would proceed as foll
 As you can call javascript from a ruby script, you can also call Ruby from Javascript. To do so, please proceed as follow:
 
 ```
-<script type="text/javascript">
+<script type="text/ruby">
   class Foo
     def bar
       puts "called bar on class Foo defined in ruby code"
